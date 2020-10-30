@@ -1,14 +1,31 @@
-Django
-whitenoise
-gunicorn
-psycopg2-binary
-dj-database-url
-factory-boy
-
-# Latest jazzmin
-https://github.com/farridav/django-jazzmin/archive/master.zip
-
-# Apps we provide additional support for
-django-mptt
-django-treebeard
-django-import-export
+asgiref==3.2.10
+defusedxml==0.6.0
+diff-match-patch==20200713
+dj-database-url==0.5.0
+Django==3.1.2
+django-debug-toolbar==3.1.1
+django-extensions==3.0.9
+django-import-export==2.4.0
+django-jazzmin @ https://github.com/farridav/django-jazzmin/archive/master.zip
+django-js-asset==1.2.2
+django-mptt==0.11.0
+django-treebeard==4.3.1
+et-xmlfile==1.0.1
+factory-boy==3.1.0
+Faker==4.14.0
+gunicorn==20.0.4
+jdcal==1.4.1
+MarkupPy==1.14
+odfpy==1.4.1
+openpyxl==3.0.5
+psycopg2-binary==2.8.6
+python-dateutil==2.8.1
+pytz==2020.1
+PyYAML==5.3.1
+six==1.15.0
+sqlparse==0.4.1
+tablib==2.0.0
+text-unidecode==1.3
+whitenoise==5.2.0
+xlrd==1.2.0
+xlwt==1.3.0
