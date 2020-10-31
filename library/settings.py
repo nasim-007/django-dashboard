@@ -122,15 +122,15 @@ if not DEBUG and not TEST:
 ########################
 JAZZMIN_SETTINGS = {
     # title of the window
-    "site_title": "Library Admin",
+    "site_title": "Nimu Dashboard Admin",
     # Title on the brand, and the login screen (19 chars max)
-    "site_header": "Library",
+    "site_header": "Nimu Dashboard",
     # square logo to use for your site, must be present in static files, used for favicon and brand on top left
     "site_logo": "books/img/logo.png",
     # Welcome text on the login screen
-    "welcome_sign": "Welcome to the library",
+    "welcome_sign": "Welcome to the Nimu dashboard",
     # Copyright on the footer
-    "copyright": "Acme Library Ltd",
+    "copyright": "Nimusoft Corporation",
     # The model admin to search from the search bar, search bar omitted if excluded
     "search_model": "auth.User",
     # Field name on user model that contains avatar image
@@ -143,7 +143,7 @@ JAZZMIN_SETTINGS = {
         # Url that gets reversed (Permissions can be added)
         {"name": "Home", "url": "admin:index", "permissions": ["auth.view_user"]},
         # external url that opens in a new window (Permissions can be added)
-        {"name": "Support", "url": "https://github.com/farridav/django-jazzmin/issues", "new_window": True,},
+        
         # model admin to link to (Permissions checked against model)
         {"model": "auth.User"},
         # App with dropdown menu to all its models pages (Permissions checked against models)
@@ -155,7 +155,7 @@ JAZZMIN_SETTINGS = {
     #############
     # Additional links to include in the user menu on the top right ('app' url type is not allowed)
     "usermenu_links": [
-        {"name": "Support", "url": "https://github.com/farridav/django-jazzmin/issues", "new_window": True,},
+        
         {"model": "auth.user"},
     ],
     #############

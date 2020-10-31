@@ -6,7 +6,7 @@ Django==3.1.2
 django-debug-toolbar==3.1.1
 django-extensions==3.0.9
 django-import-export==2.4.0
-django-jazzmin @ https://github.com/farridav/django-jazzmin/archive/master.zip
+#django-jazzmin @ https://github.com/farridav/django-jazzmin/archive/master.zip
 django-js-asset==1.2.2
 django-mptt==0.11.0
 django-treebeard==4.3.1
