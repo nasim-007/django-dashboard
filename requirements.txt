@@ -19,6 +19,7 @@ MarkupPy==1.14
 newrelic==5.22.1.152
 odfpy==1.4.1
 openpyxl==3.0.5
+Pillow==8.1.2
 ping3==2.6.6
 psycopg2-binary==2.8.6
 pyping==0.0.5

@@ -8,7 +8,9 @@ import dj_database_url
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = os.getenv("DJANGO_SECRET_KEY", "not-secret-at-all")
 
-DEBUG = bool(int(os.getenv("DEBUG", 0)))
+TEMPLATES_DIR = os.path.join(BASE_DIR,'templates')
+
+DEBUG = bool(int(os.getenv("DEBUG", 1)))
 
 
 TEST = os.getenv("FAIL_INVALID_TEMPLATE_VARS")
@@ -62,7 +64,7 @@ LOGGING = {
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
+        "DIRS": [TEMPLATES_DIR],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -88,7 +90,7 @@ AUTH_PASSWORD_VALIDATORS = [
     {"NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",},
 ]
 
-LANGUAGE_CODE = "en"
+#LANGUAGE_CODE = "en"
 TIME_ZONE = "Europe/London"
 USE_I18N = True
 LOCALE_PATHS = (os.path.join(BASE_DIR, "locale"),)
@@ -96,15 +98,19 @@ USE_L10N = True
 USE_TZ = True
 
 # English default
-gettext = lambda s: s  # NOQA
+#gettext = lambda s: s  # NOQA
+'''
 LANGUAGES = (
     ("en", gettext("English")),
     ("de", gettext("German")),
     ("es", gettext("Spanish"))
 )
+'''
 
 STATIC_URL = "/static/"
-STATIC_ROOT = os.path.join(BASE_DIR, "static")
+
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'), ]
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 
 MEDIA_URL = "/media/"
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
@@ -212,7 +218,7 @@ JAZZMIN_SETTINGS = {
     "custom_css": None,
     "custom_js": None,
     # Whether to show the UI customizer on the sidebar
-    "show_ui_builder": True,
+    "show_ui_builder": False,
     ###############
     # Change view #
     ###############
@@ -226,7 +232,7 @@ JAZZMIN_SETTINGS = {
     # override change forms on a per modeladmin basis
     "changeform_format_overrides": {"auth.user": "collapsible", "auth.group": "vertical_tabs",},
     # Add a language dropdown into the admin
-    "language_chooser": True,
+    "language_chooser": False,
 }
 
 if not DEBUG and not TEST:

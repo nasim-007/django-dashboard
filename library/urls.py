@@ -1,4 +1,5 @@
 from django.conf import settings
+from django.conf.urls.static import static
 from django.conf.urls.i18n import i18n_patterns
 from django.contrib import admin, messages
 from django.http import HttpResponseRedirect
@@ -22,15 +23,23 @@ def make_messages(request):
 
 
 urlpatterns = [
-    url(r"^$", RedirectView.as_view(pattern_name="admin:index", permanent=False)),
+    #url(r"^$", RedirectView.as_view(pattern_name="admin:index", permanent=False)),
     url(r"admin/doc/", include("django.contrib.admindocs.urls")),
     url(r"make_messages/", make_messages, name="make_messages"),
+    path('', include('testapp.urls')),
     path("i18n/", include("django.conf.urls.i18n")),
+    
 ]
 
 urlpatterns += i18n_patterns(path("admin/", admin.site.urls))
 
 if settings.DEBUG:
+    
+    urlpatterns += static(settings.MEDIA_URL,
+                          document_root=settings.MEDIA_ROOT)
+    urlpatterns += static(settings.STATIC_URL,
+                          document_root=settings.STATIC_ROOT)
+    
     urlpatterns.append(
         re_path(
             r"^static/(?P<path>.*)$",
@@ -38,6 +47,11 @@ if settings.DEBUG:
             kwargs={"document_root": settings.STATIC_ROOT},
         )
     )
+
+    
+    
+
+
 
 if "debug_toolbar" in settings.INSTALLED_APPS:
     try:
