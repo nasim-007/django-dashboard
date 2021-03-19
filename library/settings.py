@@ -7,7 +7,10 @@ import dj_database_url
 ###################
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = os.getenv("DJANGO_SECRET_KEY", "not-secret-at-all")
-DEBUG = bool(int(os.getenv("DEBUG", 1)))
+
+DEBUG = bool(int(os.getenv("DEBUG", 0)))
+
+
 TEST = os.getenv("FAIL_INVALID_TEMPLATE_VARS")
 
 PREFIX = ""
@@ -26,6 +29,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "import_export",
+    'testapp',
     
     # Our apps
     "{}library.books.apps.BooksConfig".format(PREFIX),
@@ -96,9 +100,7 @@ gettext = lambda s: s  # NOQA
 LANGUAGES = (
     ("en", gettext("English")),
     ("de", gettext("German")),
-    ("es", gettext("Spanish")),
-    ("zh-hans", gettext("Simplified Chinese")),
-    ("zh-hant", gettext("Traditional Chinese")),
+    ("es", gettext("Spanish"))
 )
 
 STATIC_URL = "/static/"
