@@ -1,3 +1,4 @@
+from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
 from django.conf.urls.i18n import i18n_patterns
@@ -6,6 +7,13 @@ from django.http import HttpResponseRedirect
 from django.urls import re_path, reverse, path
 from django.views.generic import RedirectView
 from django.views.static import serve
+from django.urls import include
+from django.conf.urls import url
+
+
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+
+
 
 try:
     from django.conf.urls import url, include
@@ -32,6 +40,15 @@ urlpatterns = [
 ]
 
 urlpatterns += i18n_patterns(path("admin/", admin.site.urls))
+
+
+urlpatterns.append(url(f'^{settings.MEDIA_URL.lstrip("/")}(?P<path>.*)$',
+                     serve, {'document_root': settings.MEDIA_ROOT}))
+
+urlpatterns += staticfiles_urlpatterns()
+
+
+
 
 if settings.DEBUG:
     

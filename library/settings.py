@@ -10,7 +10,7 @@ SECRET_KEY = os.getenv("DJANGO_SECRET_KEY", "not-secret-at-all")
 
 TEMPLATES_DIR = os.path.join(BASE_DIR,'templates')
 
-DEBUG = bool(int(os.getenv("DEBUG", 1)))
+DEBUG = bool(int(os.getenv("DEBUG", 0)))
 
 
 TEST = os.getenv("FAIL_INVALID_TEMPLATE_VARS")
