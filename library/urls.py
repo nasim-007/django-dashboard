@@ -34,6 +34,8 @@ urlpatterns = [
     #url(r"^$", RedirectView.as_view(pattern_name="admin:index", permanent=False)),
     url(r"admin/doc/", include("django.contrib.admindocs.urls")),
     url(r"make_messages/", make_messages, name="make_messages"),
+    url(r'^media/(?P<path>.*)$', serve,{'document_root': settings.MEDIA_ROOT}),
+    url(r'^static/(?P<path>.*)$', serve,{'document_root': settings.STATIC_ROOT}),
     path('', include('testapp.urls')),
     path("i18n/", include("django.conf.urls.i18n")),
     
@@ -42,10 +44,6 @@ urlpatterns = [
 urlpatterns += i18n_patterns(path("admin/", admin.site.urls))
 
 
-urlpatterns.append(url(f'^{settings.MEDIA_URL.lstrip("/")}(?P<path>.*)$',
-                     serve, {'document_root': settings.MEDIA_ROOT}))
-
-urlpatterns += staticfiles_urlpatterns()
 
 
 
@@ -57,13 +55,7 @@ if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL,
                           document_root=settings.STATIC_ROOT)
     
-    urlpatterns.append(
-        re_path(
-            r"^static/(?P<path>.*)$",
-            serve,
-            kwargs={"document_root": settings.STATIC_ROOT},
-        )
-    )
+    
 
     
     
